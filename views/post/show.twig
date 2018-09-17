@@ -29,13 +29,26 @@
           </div>
           <div class="col s11">
             <p class="black-text">{{ response.responseContent }}</p>
-            <span class="green-text">{{ response.username }}</span>
-            <span class="grey-text right">{{ response.updatedAt | date('Y/m/d') }}</span>
+            <span>
+              <span class="green-text">{{ response.username }} </span>
+              <span class="grey-text">{{ response.updatedAt | date('Y/m/d') }}</span>
+            </span>
+            <span class="red-text right delete-response" id="response-{{ response.id }}" style="cursor: pointer">
+              <i class="material-icons">delete_forever</i>
+            </span>
           </div>
         </div>
       </div>
     </div>
   {% endfor %}
   <br />
-
+  <script>
+    $(".delete-response").click(function() {
+      var elementId = $(this).attr("id");
+      var responseId = elementId.split('-')[1];
+      if (confirm("Are you sure to delete this response?") == true) {
+        location.href = "/response/delete/"+responseId;
+      }
+    });
+  </script>
 {% endblock %}
