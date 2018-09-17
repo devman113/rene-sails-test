@@ -10,6 +10,9 @@ module.exports = {
   	username: {
   		type: Sequelize.STRING
     },
+    postTitle: {
+  		type: Sequelize.STRING
+  	},
     postContent: {
   		type: Sequelize.STRING
   	},

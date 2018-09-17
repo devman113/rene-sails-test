@@ -10,8 +10,9 @@
   </nav>
   <br />
 
+  <h4>{{ post.postTitle }}</h4>
   <h6>
-      <span class="blue-text">{{ post.username }},</span>
+      <span class="green-text">{{ post.username }} </span>
       <span class="grey-text">{{ post.updatedAt | date('Y/m/d') }}</span>
   </h6>
   <p class="flow-text">
@@ -28,7 +29,7 @@
           </div>
           <div class="col s11">
             <p class="black-text">{{ response.responseContent }}</p>
-            <span class="blue-text">{{ response.username }}</span>
+            <span class="green-text">{{ response.username }}</span>
             <span class="grey-text right">{{ response.updatedAt | date('Y/m/d') }}</span>
           </div>
         </div>
