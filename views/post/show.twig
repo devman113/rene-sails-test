@@ -1,0 +1,40 @@
+{% extends '../layout.twig' %}
+{% block body %}
+  <nav>
+    <div class="row nav-wrapper">
+      <div class="col s12">
+        <a href="/post" class="breadcrumb">Posts</a>
+        <a href="#" class="breadcrumb">Post</a>
+      </div>
+    </div>
+  </nav>
+  <br />
+
+  <h6>
+      <span class="blue-text">{{ post.username }},</span>
+      <span class="grey-text">{{ post.updatedAt | date('Y/m/d') }}</span>
+  </h6>
+  <p class="flow-text">
+    {{ post.postContent }}
+  </p>
+  <br />
+
+  {% for response in post.responses %}
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row valign-wrapper">
+          <div class="col s1">
+            <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="" class="circle responsive-img" />
+          </div>
+          <div class="col s11">
+            <p class="black-text">{{ response.responseContent }}</p>
+            <span class="blue-text">{{ response.username }}</span>
+            <span class="grey-text right">{{ response.updatedAt | date('Y/m/d') }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  <br />
+
+{% endblock %}

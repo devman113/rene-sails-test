@@ -23,7 +23,9 @@ module.exports = {
 			],
 			id: req.params.id
 		}).then(function(post) {
-			res.json(post);
+			return res.view('post/show', {
+				post: post
+			});
 		}).catch(function(err) {
 			res.json(err);
 		});
