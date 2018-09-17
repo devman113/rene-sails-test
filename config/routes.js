@@ -35,7 +35,8 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /post/:id': 'PostController.get'
+  'GET /post/:id': 'PostController.get',
+  'GET /post/delete/:id': 'PostController.delete'
 
   /***************************************************************************
   *                                                                          *

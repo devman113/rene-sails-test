@@ -32,6 +32,23 @@ module.exports = {
 		}).catch(function(err) {
 			res.json(err);
 		});
+	},
+	delete: function(req, res) {
+		var id = req.params.id;
+		if (!id) return res.send("No id specified.", 500);
+
+		Post.findById(id).then(post => {
+			if (!post) return res.send("No post with that idid exists.", 404);
+
+			Post.destroy({ where: { id: id } }).then(() => {
+				return res.redirect('/post');
+			}).catch(function(err) {
+				res.json(err);
+			});
+			
+		}).catch(function(err) {
+			res.json(err);
+		});
 	}
 };
 
