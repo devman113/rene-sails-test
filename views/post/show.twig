@@ -42,6 +42,25 @@
     </div>
   {% endfor %}
   <br />
+
+  <h4>Add new response</h4>
+  <div class="row">
+    <form action="/response/new" method="post">
+      <div class="input-field col s6">
+        <input id="username" name="username" type="text" class="validate">
+        <label class="active" for="username">Username</label>
+      </div>
+      <input id="postId" name="postId" type="hidden" value={{post.id}}>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="responseContent" name="responseContent" class="materialize-textarea" data-length="120"></textarea>
+          <label for="responseContent">Content</label>
+        </div>
+      </div>
+      <button type="submit" class="waves-effect waves-light btn">Submit</button>
+    </form>
+  </div>
+
   <script>
     $(".delete-response").click(function() {
       var elementId = $(this).attr("id");

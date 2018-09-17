@@ -37,6 +37,7 @@ module.exports.routes = {
   },
   'GET /post/:id': 'PostController.get',
   'GET /post/delete/:id': 'PostController.delete',
+  'POST /response/new': 'ResponseController.new',
   'GET /response/delete/:id': 'ResponseController.delete'
 
   /***************************************************************************

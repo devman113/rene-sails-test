@@ -17,6 +17,17 @@ module.exports = {
 			res.json(err);
 		});
 	},
+	new: function(req, res) {
+		Response.create({  
+			postId: req.body.postId,
+			username: req.body.username,
+			responseContent: req.body.responseContent
+		}).then(response => {		
+			res.redirect('back');
+		}).catch(function(err) {
+			res.json(err);
+		});
+	},
 	delete: function(req, res) {
 		var id = req.params.id;
 		if (!id) return res.send("No id specified.", 500);
