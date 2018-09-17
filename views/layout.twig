@@ -27,12 +27,17 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--STYLES END-->
 
     {% block head %}{% endblock %}
   </head>
 
   <body>
+    <div class="container">
     {% block body %}
 
 
@@ -82,5 +87,6 @@
     <script src="/js/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
     {% endblock %}
+    </div>
   </body>
 </html>
