@@ -8,11 +8,20 @@
 module.exports = {
 	index: function(req, res) {
 		Post.findAll({
-			include: [
-				{model: Response, as: 'responses'}
-			]
 		}).then(function(posts) {
 			res.json(posts);
+		}).catch(function(err) {
+			res.json(err);
+		});
+	},
+	get: function(req, res) {
+		Post.findOne({
+			include: [
+				{model: Response, as: 'responses'}
+			],
+			id: req.params.id
+		}).then(function(post) {
+			res.json(post);
 		}).catch(function(err) {
 			res.json(err);
 		});
