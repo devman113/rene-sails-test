@@ -1,0 +1,23 @@
+{% extends '../layout.twig' %}
+{% block body %}
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  {% for post in posts %}
+  <tr>
+    <td>{{ post.username }}</td>
+    <td><a href="/post/get/{{ post.id }}">Show</a></td>
+     <td><a href="/post/remove/{{ post.id }}">Delete</a></td>
+  </tr>
+  {% endfor %}
+</table>
+<br />
+
+<a href="/post/new">New Post</a>
+{% endblock %}

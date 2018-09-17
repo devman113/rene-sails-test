@@ -9,7 +9,9 @@ module.exports = {
 	index: function(req, res) {
 		Post.findAll({
 		}).then(function(posts) {
-			res.json(posts);
+			return res.view('post/list', {
+				posts: posts
+			});
 		}).catch(function(err) {
 			res.json(err);
 		});
