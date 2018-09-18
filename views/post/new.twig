@@ -1,0 +1,32 @@
+{% extends '../layout.twig' %}
+{% block body %}
+  <nav>
+    <div class="row nav-wrapper">
+      <div class="col s12">
+        <a href="/post" class="breadcrumb">Posts</a>
+        <a href="#" class="breadcrumb">New Post</a>
+      </div>
+    </div>
+  </nav>
+  <br />
+
+  <div class="row">
+    <form action="/post/new" method="post">
+      <div class="input-field col s6">
+        <input id="username" name="username" type="text" class="validate">
+        <label class="active" for="username">Username</label>
+      </div>
+       <div class="input-field col s6">
+        <input id="postTitle" name="postTitle" type="text" class="validate">
+        <label class="active" for="postTitle">Title</label>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="postContent" name="postContent" class="materialize-textarea" data-length="120"></textarea>
+          <label for="postContent">Content</label>
+        </div>
+      </div>
+      <button type="submit" class="waves-effect waves-light btn">Submit</button>
+    </form>
+  </div>
+{% endblock %}

@@ -36,8 +36,10 @@ module.exports.routes = {
     view: 'homepage'
   },
   'GET /post/:id': 'PostController.get',
+  'GET /newpost': { view: 'post/new' },
+  'POST /post/new/': 'ResponseController.new',
   'GET /post/delete/:id': 'PostController.delete',
-  'POST /response/new': 'ResponseController.new',
+  'POST /response/new/': 'ResponseController.new',
   'GET /response/delete/:id': 'ResponseController.delete'
 
   /***************************************************************************

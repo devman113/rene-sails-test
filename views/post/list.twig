@@ -1,7 +1,7 @@
 {% extends '../layout.twig' %}
 {% block body %}
   <h1>Listing posts</h1>
-
+  <a href="/newpost" class="title">New post</a>
   <ul class="collection">
     {% for post in posts %}
     <li class="collection-item avatar" style="min-height: 0">

@@ -19,15 +19,25 @@ module.exports = {
 			res.json(err);
 		});
 	},
+	new: function(req, res) {
+		Post.create({  
+			username: req.body.username,
+			postTitle: req.body.postTitle,
+			postContent: req.body.postContent
+		}).then(post => {		
+			res.redirect('post');
+		}).catch(function(err) {
+			res.json(err);
+		});
+	},
 	get: function(req, res) {
-		Post.findOne({
+		Post.findById(req.params.id, {
 			include: [
 				{model: Response, as: 'responses'}
-			],
-			id: req.params.id
-		}).then(function(post) {
+			]
+		}).then(post => {
 			return res.view('post/show', {
-				post: post
+						post: post
 			});
 		}).catch(function(err) {
 			res.json(err);
@@ -40,15 +50,15 @@ module.exports = {
 		Post.findById(id).then(post => {
 			if (!post) return res.send("No post with that idid exists.", 404);
 
-			Post.destroy({ where: { id: id } }).then(() => {
-				return res.redirect('/post');
-			}).catch(function(err) {
-				res.json(err);
+			Response.destroy({ where: { postId: id } })
+				.then(Post.destroy({ where: { id: id } }))
+				.then(() => {
+					return res.redirect('/post');
+				})
+				.catch(function(err) {
+					res.json(err);
+				});
 			});
-			
-		}).catch(function(err) {
-			res.json(err);
-		});
 	}
 };
 
