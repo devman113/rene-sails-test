@@ -14,13 +14,21 @@
       <span class="secondary-content valign-wrapper"  style="margin-right: 32px">
         <i class="material-icons">comment</i> {{ post.responsesCount }}
       </span>
-      <span class="secondary-content red-text delete-post" id="post-{{ post.id }}"  style="cursor: pointer">
+      <span class="secondary-content red-text delete-post" id="post-{{ post.id }}-{{ post.username }}"  style="cursor: pointer">
         <i class="material-icons">delete_forever</i>
       </span>
     </li>
     {% endfor %}
   </ul>
   <script>
+    localStorage.setItem("username", "Tester");
+    $(".delete-post").each(function() {
+      var elementId = $(this).attr("id");
+      var username = elementId.split('-')[2];
+      if (localStorage.username !== username) {
+        $(this).hide();
+      }
+    });
     $(".delete-post").click(function() {
       var elementId = $(this).attr("id");
       var postId = elementId.split('-')[1];

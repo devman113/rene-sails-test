@@ -2,9 +2,11 @@
 {% block body %}
   <nav>
     <div class="row nav-wrapper">
-      <div class="col s12">
+      <div class="col s11">
         <a href="/post" class="breadcrumb">Posts</a>
         <a href="#" class="breadcrumb">Post</a>
+      </div>
+      <div class="col s1 right current-user">
       </div>
     </div>
   </nav>
@@ -33,7 +35,7 @@
               <span class="green-text">{{ response.username }} </span>
               <span class="grey-text">{{ response.updatedAt | date('Y/m/d') }}</span>
             </span>
-            <span class="red-text right delete-response" id="response-{{ response.id }}" style="cursor: pointer">
+            <span class="red-text right delete-response" id="response-{{ response.id }}-{{ response.username }}" style="cursor: pointer">
               <i class="material-icons">delete_forever</i>
             </span>
           </div>
@@ -62,6 +64,15 @@
   </div>
 
   <script>
+    $(".current-user").html(localStorage.username);
+    $("#username").val(localStorage.username);
+    $(".delete-response").each(function() {
+      var elementId = $(this).attr("id");
+      var username = elementId.split('-')[2];
+      if (localStorage.username !== username) {
+        $(this).hide();
+      }
+    });
     $(".delete-response").click(function() {
       var elementId = $(this).attr("id");
       var responseId = elementId.split('-')[1];
