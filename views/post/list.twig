@@ -12,7 +12,7 @@
         <span class="grey-text">{{ post.updatedAt | date('Y/m/d') }}</span>
       </p>
       <span class="secondary-content valign-wrapper"  style="margin-right: 32px">
-        <i class="material-icons">comment</i> {{ post.responses.length }}
+        <i class="material-icons">comment</i> {{ post.responsesCount }}
       </span>
       <span class="secondary-content red-text delete-post" id="post-{{ post.id }}"  style="cursor: pointer">
         <i class="material-icons">delete_forever</i>

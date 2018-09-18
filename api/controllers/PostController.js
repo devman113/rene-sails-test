@@ -7,11 +7,7 @@
 
 module.exports = {
 	index: function(req, res) {
-		Post.findAll({
-			include: [
-				{model: Response, as: 'responses'}
-			]
-		}).then(function(posts) {
+		Post.findAll().then(function(posts) {
 			return res.view('post/list', {
 				posts: posts
 			});

@@ -28,7 +28,11 @@ module.exports = {
     tableName: 'post',
     classMethods: {},
     instanceMethods: {},
-    hooks: {}
+    hooks: {
+      beforeCreate: (post) => {
+        post.responsesCount = 0;
+      }
+    }
   }
 };
 

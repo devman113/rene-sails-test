@@ -35,12 +35,15 @@ module.exports = {
 		Response.findById(id).then(response => {
 			if (!response) return res.send("No response with that id exists.", 404);
 
-			Response.destroy({ where: { id: id } }).then(() => {
-				return res.redirect('back');
-			}).catch(function(err) {
-				res.json(err);
+			Post.findById(response.postId).then(post => {
+				Post.update( 
+					{ responsesCount: post.responsesCount > 1 ? post.responsesCount - 1 : 0 }, 
+					{ where: {id: response.postId} })
+						.then(Response.destroy({ where: { id: id } }))
+						.then(() => {
+							return res.redirect('back');
+						});
 			});
-			
 		}).catch(function(err) {
 			res.json(err);
 		});

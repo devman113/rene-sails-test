@@ -22,7 +22,18 @@ module.exports = {
     tableName: 'response',
     classMethods: {},
     instanceMethods: {},
-    hooks: {}
+    hooks: {
+      afterCreate: (response) => {
+        Post.findById(response.postId).then(post => {
+          Post.update( 
+            { responsesCount: post.responsesCount + 1 }, 
+            { where: {id: response.postId} }
+          ).then(() => {
+            console.log('The count of responses has been increased');
+          });
+        })
+      }
+    }
   }
 };
 
