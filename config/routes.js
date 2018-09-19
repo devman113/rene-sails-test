@@ -37,6 +37,7 @@ module.exports.routes = {
   },
   'GET /post/:id': 'PostController.get',
   'GET /newpost': { view: 'post/new' },
+  'GET /allpost': 'PostController.all',
   'POST /post/new/': 'ResponseController.new',
   'GET /post/delete/:id': 'PostController.delete',
   'POST /response/new/': 'ResponseController.new',

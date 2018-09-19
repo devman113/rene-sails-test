@@ -15,6 +15,13 @@ module.exports = {
 			res.json(err);
 		});
 	},
+	all: function(req, res) {
+		Post.findAll().then(function(posts) {
+			res.send(posts);
+		}).catch(function(err) {
+			res.json(err);
+		});
+	},
 	new: function(req, res) {
 		Post.create({  
 			username: req.body.username,

@@ -1,7 +1,15 @@
 {% extends '../layout.twig' %}
 {% block body %}
   <h1>Listing posts</h1>
-  <a href="/newpost" class="title">New post</a>
+  <div class="col s11">
+    <a href="/newpost" class="title">New post</a>
+    <span class="right">
+      TOTAL: 
+      <span class="green-text post-count">
+      </span>
+       posts
+    </span>
+  </div>
   <ul class="collection">
     {% for post in posts %}
     <li class="collection-item avatar" style="min-height: 0">
@@ -34,6 +42,14 @@
       var postId = elementId.split('-')[1];
       if (confirm("Are you sure to delete this post?") == true) {
         location.href = "/post/delete/"+postId;
+      }
+    });
+    $.ajax({
+      method: "GET",
+      url: "/allpost",
+      success: function( msg ) {
+        if (Array.isArray(msg))
+          $('.post-count').text(msg.length);
       }
     });
   </script>
