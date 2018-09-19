@@ -23,11 +23,17 @@ module.exports = {
 		});
 	},
 	new: function(req, res) {
-		Post.create({  
-			username: req.body.username,
-			postTitle: req.body.postTitle,
-			postContent: req.body.postContent
-		}).then(post => {		
+		var Q = require("q");
+		var creator =  Q.async(function* () {
+			var post = yield Post.create({  
+				username: req.body.username,
+				postTitle: req.body.postTitle,
+				postContent: req.body.postContent
+			});
+			return post;
+		});
+		creator().then(post => {		
+			console.log('A new post has been created.', post);
 			res.redirect('post');
 		}).catch(function(err) {
 			res.json(err);
